@@ -9,18 +9,14 @@ All of the included plugins are pinned to a version that ensures they are compat
 
 As I mentioned, this config is meant as a starting point for people new to Neovim who want a familiar IDE experience. The config has a very simple structure that makes it easy to add new plugins. 
 
-## Install Neovim 0.7
+## Install Neovim
 
-You can install Neovim with your package manager e.g. brew, apt, pacman etc.. but remember that when you update your packages Neovim may be upgraded to a newer version.
-
-If you would like to make sure Neovim only updates when you want it to than I recommend installing from source:
 
 ```sh
-git clone https://github.com/neovim/neovim.git
-cd neovim
-git checkout release-0.7
-make CMAKE_BUILD_TYPE=Release
-sudo make install
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:neovim-ppa/stable
+sudo apt-get update
+sudo apt-get install neovim
 ```
 
 ## Install the config
