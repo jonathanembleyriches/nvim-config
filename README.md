@@ -1,7 +1,8 @@
-# A Basic Stable IDE config for Neovim (Jonathans version)
+# GoatVim
+
+This Neovim configuration is inspired by many and built upon the few.
 
 ## Install Neovim
-
 
 ```sh
 sudo apt-get install software-properties-common
@@ -20,9 +21,6 @@ git clone https://github.com/LunarVim/nvim-basic-ide.git ~/.config/nvim
 
 Run `nvim` and wait for the plugins to be installed 
 
-**NOTE** (You will notice treesitter pulling in a bunch of parsers the next time you open Neovim) 
-
-**NOTE** Checkout this file for some predefined keymaps: [keymaps](https://github.com/LunarVim/nvim-basic-ide/blob/master/lua/user/keymaps.lua)
 
 ## Get healthy
 
@@ -37,8 +35,6 @@ You'll probably notice you don't have support for copy/paste also that python an
 So let's fix that
 
 First we'll fix copy/paste
-
-- On mac `pbcopy` should be builtin
 
 - On Ubuntu
 
@@ -68,9 +64,19 @@ We will also need `ripgrep` for Telescope to work:
   ```sh
   sudo apt install ripgrep
   ```
+- LazyGit
+```sh
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[0-9.]+')
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+sudo tar xf lazygit.tar.gz -C /usr/local/bin lazygit
+```
+
 ---
 
 **NOTE** make sure you have [node](https://nodejs.org/en/) installed, I recommend a node manager like [fnm](https://github.com/Schniz/fnm).
+
+---
+
 
 ## Fonts
 
@@ -92,20 +98,72 @@ First Enter:
 
 and press `i` on the Language Server you wish to install
 
-Next you will need to add the server to this list: [servers](https://github.com/LunarVim/nvim-basic-ide/blob/8b9ec3bffe8c8577042baf07c75408532a733fea/lua/user/lsp/lsp-installer.lua#L6)
+Now add the name of the language server to the "servers" list in the "lsp-installer.lua" file (line 6).
 
 ### Formatters and linters
 
-Make sure the formatter or linter is installed and add it to this setup function: [null-ls](https://github.com/LunarVim/nvim-basic-ide/blob/8b9ec3bffe8c8577042baf07c75408532a733fea/lua/user/lsp/null-ls.lua#L13)
+Make sure the formatter or linter is installed and add it to the "null_ls.setup{}" function on line 12 in the "null-ls.lua" file.
 
 **NOTE** Some are already setup as examples, remove them if you want
 
-### Plugins
+### Debugger
 
-You can install new plugins here: [plugins](https://github.com/LunarVim/nvim-basic-ide/blob/8b9ec3bffe8c8577042baf07c75408532a733fea/lua/user/plugins.lua#L42)
+To install a custom debugger:
+```
+:DIInstall <name>
+```
+Then add the setup information for that debugger to the "dap.lua" file.
+For example:
+```
+dap_install.config("python", {})
+```
+### Compilers
+
+Compilers to be setup. Come back soon!
+
+---
+### ROS
+
+ROS support to be setup. Come back soon!
 
 ---
 
+### Plugins
+
+You can install new plugins in the "plugins.lua" file.
+
+---
+## Keybindings
+
+| Binding                     | Description              |
+|-----------------------------|--------------------------|
+| Space                       | Leader key               |
+| ctrl + [h,j,k,l]            | Navigate window          |
+| ctrl + [up,down,left,right] | Resize window            |
+| Shift + [l,h]               | Navigate buffer          |
+| Shift + q                   | Close buffer             |
+| Leader + h                  | Clear highlights         |
+| jk                          | Enter normal from insert |
+| > or <                      | Indent in visual         |
+| Leader + ff                 | Telescope find files     |
+| Leader + ft                 | Telescope live grep      |
+| Leader + fp                 | Telescope projects       |
+| Leader + fb                 | Telescope buffers        |
+| Leader + gg                 | Lazy git                 |
+| Leader + /                  | Toggle comment in code   |
+| Leader + \                  | Open floating terminal   |
+| Leader + e                  | Tree view                |
+| Leader + db                 | DAP Toggle breakpoint    |
+| Leader + dc                 | DAP continue             |
+| Leader + di                 | DAP step into            |
+| Leader + do                 | DAP step over            |
+| Leader + d0                 | DAP step out             |
+| Leader + dr                 | DAP repl toggle          |
+| Leader + dl                 | DAP run last             |
+| Leader + du                 | DAP UI toggle            |
+| Leader + dt                 | DAP terminate            |
+|                             |                          |
+---
 ## Plugins
 
 - [packer](https://github.com/wbthomason/packer.nvim)

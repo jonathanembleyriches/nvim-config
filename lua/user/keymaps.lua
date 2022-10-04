@@ -50,6 +50,7 @@ keymap("i", "jk", "<ESC>", opts)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
+
 -- Plugins --
 
 -- NvimTree
