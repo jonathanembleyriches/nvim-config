@@ -3,12 +3,14 @@
 This Neovim configuration is inspired by many and built upon the few.
 
 ## Install Neovim
+Download the debian installer from :
+
+https://github.com/neovim/neovim/releases/download/v0.7.2/nvim-linux64.deb
+
+And run the following command.
 
 ```sh
-sudo apt-get install software-properties-common
-sudo add-apt-repository ppa:neovim-ppa/stable
-sudo apt-get update
-sudo apt-get install neovim
+sudo apt install ./nvim-linux64.deb
 ```
 
 ## Install the config
