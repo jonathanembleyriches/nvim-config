@@ -4,6 +4,7 @@ This Neovim configuration is inspired by many and built upon the few.
 
 
 ## TO DO
+- Sort python environments out
 - update keybindings for lsp
 - add compiler compatibility
 - add ros compatability
