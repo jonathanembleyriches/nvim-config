@@ -1,3 +1,5 @@
+python_path = require "user.python"
+
 return {
   settings = {
     python = {
@@ -5,9 +7,9 @@ return {
         typeCheckingMode = "on",
 
       },
-      -- venvPath = "/home/jon/Documents/python_envs/",
+      -- venvPath = "/home/jon/anaconda3/envs/",
       -- venv = "env_1",
-      pythonPath = "/home/jon/anaconda3/envs/py38/bin/python3.8",
+      pythonPath = python_path["path"], --"/home/jon/anaconda3/envs/py38/bin/python3.8"],
     },
   },
 }
