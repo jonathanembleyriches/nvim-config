@@ -81,7 +81,21 @@ keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
 keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
 keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 
-local python_path = require "user.python" 
+local python_path = require "user.python"
+
+
 local python_run_string = ":term '" .. tostring(python_path["path"]) .. "' %<cr>"
+--local file,err = io.open("log_keymaps.txt","w")
+--if file then
+--  file:write(tostring(python_run_string))
+--  file:close()
+--else 
+--  print("err")
+--end
+
+
+
+
+
 keymap("n", "<leader>cr", python_run_string , opts)
 

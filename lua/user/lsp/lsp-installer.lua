@@ -13,6 +13,8 @@ local servers = {
   "jsonls",
   "yamlls",
   "omnisharp",
+  --"csharp_ls",
+
   -- "pylsp",
 }
 
@@ -41,5 +43,17 @@ for _, server in pairs(servers) do
     opts = vim.tbl_deep_extend("force", pyright_opts, opts)
   end
 
+  if server == "omnisharp" then
+    
+    local omni_opts = require "user.lsp.settings.omnisharp"
+    opts = vim.tbl_deep_extend("force", omni_opts, opts)
+    -- local pid = vim.fn.getpid()
+    --local omnisharp_bin = "/home/jon/omnirun"
+    --lspconfig[server].setup{
+    --cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) };
+    --}
+  end
+
   lspconfig[server].setup(opts)
+
 end
