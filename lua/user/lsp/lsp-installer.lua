@@ -5,7 +5,8 @@ end
 
 local servers = {
   "sumneko_lua",
-  "cssls",
+ -- "cssls",
+  "clangd",
   "html",
   "tsserver",
   "pyright",
