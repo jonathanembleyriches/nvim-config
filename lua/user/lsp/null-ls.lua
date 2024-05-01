@@ -12,11 +12,12 @@ local diagnostics = null_ls.builtins.diagnostics
 null_ls.setup {
   debug = true,
   sources = {
-    formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
+   -- formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote", "--tab-width", "8"  } }),
 		--formatting.black.with({ extra_args = { "--fast" } }),
 
     -- diagnostics.flake8,
-    formatting.black,
+    --formatting.black,
+    formatting.ruff,
     null_ls.builtins.diagnostics.pylint.with({
       diagnostics_postprocess = function(diagnostic)
         diagnostic.code = diagnostic.message_id

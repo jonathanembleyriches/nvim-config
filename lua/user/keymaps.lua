@@ -68,7 +68,9 @@ keymap("n", "<leader>gr", "<cmd>lua _RUNPY_TOGGLE()<CR>", opts)
 
 -- Comment
 keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
+
 keymap("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>')
+
 
 keymap("n", "<leader>cia","<cmd>lua require('Comment.api').insert.linewise.above()<CR>", opts)
 keymap("n", "<leader>cie","<cmd>lua require('Comment.api').insert.linewise.eol()<CR>", opts)
@@ -102,6 +104,14 @@ local python_run_string = ":term '" .. tostring(python_path["path"]) .. "' %<cr>
 
 
 
+vim.g.doge_doc_standard_python = 'sphinx'
 
 keymap("n", "<leader>cr", python_run_string , opts)
+
+keymap('n', '<TAB>', '<Plug>(doge-comment-jump-forward)')
+keymap('n', '<S-TAB>', '<Plug>(doge-comment-jump-backward)')
+keymap('i', '<TAB>', '<Plug>(doge-comment-jump-forward)')
+keymap('i', '<S-TAB>', '<Plug>(doge-comment-jump-backward)')
+keymap('x', '<TAB>', '<Plug>(doge-comment-jump-forward)')
+keymap('x', '<S-TAB>', '<Plug>(doge-comment-jump-backward)')
 
